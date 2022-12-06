@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const host = "0.0.0.0";
 const data = require("./models/db.js");
 const path = require("path");
 const file = __dirname + path.join("/public/index.html");
@@ -45,6 +46,6 @@ mongoose.connect(dbUrl,connectionParams).then(() =>{
 }).catch((e) => {
     console.log("The errror is : ",e);
 })
-app.listen(port,() => {
+app.listen(port,host, () => {
     console.log("App is running successfully");
 })
